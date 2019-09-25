@@ -5,5 +5,10 @@
   <%= @blog.name %>
 </p>
 
+<%= render 'entries/index', blog: @blog %>
+
+<br>
+<br>
+
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
 <%= link_to 'Back', blogs_path %>
