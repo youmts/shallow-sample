@@ -10,5 +10,30 @@
   <%= @entry.body %>
 </p>
 
+
+<h1>Comments</h1>
+
+<table>
+  <tbody>
+  <% @entry.comments.each do |comment| %>
+    <tr>
+      <td><%= comment.body %></td>
+      <td><%= link_to 'Destroy', [@blog, @entry, comment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= form_with(model: [@blog, @entry, @entry.comments.build], local: true) do |form| %>
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_field :body %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
 <%= link_to 'Edit', edit_blog_entry_path(@blog, @entry) %> |
 <%= link_to 'Back', @blog %>
