@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @blog.name %>
+</p>
+
+<%= render 'user/entries/index', blog: @blog %>
+
+<br>
+<br>
+
+<%= link_to 'Edit', edit_user_blog_path(@blog) %> |
+<%= link_to 'Back', user_blogs_path %>

@@ -1,4 +1,4 @@
-class BlogsController < ApplicationController
+class User::BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -19,7 +19,7 @@ class BlogsController < ApplicationController
     @blog = Blog.new(blog_params)
 
     if @blog.save
-      redirect_to @blog, notice: 'Blog was successfully created.'
+      redirect_to [:user, @blog], notice: 'Blog was successfully created.'
     else
       render :new
     end
@@ -27,7 +27,7 @@ class BlogsController < ApplicationController
 
   def update
     if @blog.update(blog_params)
-      redirect_to @blog, notice: 'Blog was successfully updated.'
+      redirect_to [:user, @blog], notice: 'Blog was successfully updated.'
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class BlogsController < ApplicationController
   def destroy
     @blog.destroy
     respond_to do |format|
-      format.html { redirect_to blogs_url, notice: 'Blog was successfully destroyed.' }
+      format.html { redirect_to user_blogs_url, notice: 'Blog was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

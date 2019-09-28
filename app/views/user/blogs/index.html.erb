@@ -14,9 +14,9 @@
     <% @blogs.each do |blog| %>
       <tr>
         <td><%= blog.name %></td>
-        <td><%= link_to 'Show', blog %></td>
-        <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-        <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', [:user, blog] %></td>
+        <td><%= link_to 'Edit', edit_user_blog_path(blog) %></td>
+        <td><%= link_to 'Destroy', [:user, blog], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Blog', new_blog_path %>
+<%= link_to 'New Blog', new_user_blog_path %>

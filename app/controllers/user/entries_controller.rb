@@ -1,4 +1,4 @@
-class EntriesController < ApplicationController
+class User::EntriesController < ApplicationController
   before_action :set_blog, only: %i(new create)
   before_action :set_entry, only: %i(show edit update destroy)
 
@@ -16,7 +16,7 @@ class EntriesController < ApplicationController
     @entry = @blog.entries.new(entry_params)
 
     if @entry.save
-      redirect_to @entry, notice: 'Entry was successfully created.'
+      redirect_to [:user, @entry], notice: 'Entry was successfully created.'
     else
       render :new
     end
@@ -24,7 +24,7 @@ class EntriesController < ApplicationController
 
   def update
     if @entry.update(entry_params)
-      redirect_to @entry, notice: 'Entry was successfully updated.'
+      redirect_to [:user, @entry], notice: 'Entry was successfully updated.'
     else
       render :edit
     end
@@ -32,7 +32,7 @@ class EntriesController < ApplicationController
 
   def destroy
     @entry.destroy
-    redirect_to @entry.blog, notice: 'Entry was successfully destroyed.'
+    redirect_to [:user, @entry.blog], notice: 'Entry was successfully destroyed.'
   end
 
   private
