@@ -18,13 +18,13 @@
   <% @entry.comments.each do |comment| %>
     <tr>
       <td><%= comment.body %></td>
-      <td><%= link_to 'Destroy', [@blog, @entry, comment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
 
-<%= form_with(model: [@blog, @entry, @entry.comments.build], local: true) do |form| %>
+<%= form_with(model: [@entry, @entry.comments.build], local: true) do |form| %>
   <div class="field">
     <%= form.label :body %>
     <%= form.text_field :body %>
@@ -35,5 +35,5 @@
   </div>
 <% end %>
 
-<%= link_to 'Edit', edit_blog_entry_path(@blog, @entry) %> |
-<%= link_to 'Back', @blog %>
+<%= link_to 'Edit', edit_entry_path(@entry) %> |
+<%= link_to 'Back', @entry.blog %>

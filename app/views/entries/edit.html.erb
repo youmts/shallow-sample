@@ -1,6 +1,6 @@
 <h1>Editing Entry</h1>
 
-<%= render 'form', blog: @blog, entry: @entry %>
+<%= render 'form', blog: nil, entry: @entry %>
 
-<%= link_to 'Show', [@blog, @entry] %> |
-<%= link_to 'Back', blog_path(@blog) %>
+<%= link_to 'Show', @entry %> |
+<%= link_to 'Back', blog_path(@entry.blog) %>
